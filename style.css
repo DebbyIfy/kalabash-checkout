@@ -1,0 +1,26 @@
+ * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; }
+    input, button, select { font-family: inherit; }
+    input::placeholder { color: #94A3B8; }
+    input:focus { outline: none; }
+    button { cursor: pointer; border: none; background: none; padding: 0; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.4); }
+      70% { transform: scale(1.08); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes copyPop {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.18); }
+      100% { transform: scale(1); }
+    }
