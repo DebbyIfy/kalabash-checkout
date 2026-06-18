@@ -161,14 +161,14 @@
             Sign in to complete your payment at <strong style="color: #0F172A; font-weight: 600;">TechMart Store</strong>
           </div>
 
-          <!-- Email -->
+          <!-- Phone number -->
           <div style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 7px; letter-spacing: 0.01em;">Email address</label>
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 7px; letter-spacing: 0.01em;">Phone number</label>
             <input
-              type="email"
-              value="{{ email }}"
-              onChange="{{ onEmail }}"
-              placeholder="you@example.com"
+              type="tel"
+              value="{{ phone }}"
+              onChange="{{ onPhone }}"
+              placeholder="08012345678"
               style="width: 100%; height: 50px; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 0 16px; font-size: 15px; color: #0F172A; background: #FAFAFA; transition: all 0.15s;"
               style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.09);"
             ></input>
@@ -746,7 +746,7 @@
 class Component extends DCLogic {
   state = {
     screen: 'signin',
-    email: '',
+    phone: '',
     password: '',
     showPassword: false,
     topupAmount: '',
@@ -963,7 +963,7 @@ class Component extends DCLogic {
     const otpFull = s.otp.every(function(d) { return d !== ''; });
     const topupNum = parseFloat(String(s.topupAmount).replace(/,/g, '')) || 0;
     const topupValid = topupNum >= 100;
-    const signinEnabled = !!s.email && !!s.password;
+    const signinEnabled = !!s.phone && !!s.password;
 
     return {
       // responsive layout
@@ -1014,7 +1014,7 @@ class Component extends DCLogic {
       balanceBorderColor: isInsufficient ? 'rgba(239,68,68,0.22)' : 'rgba(34,197,94,0.22)',
 
       // signin
-      email: s.email,
+      phone: s.phone,
       password: s.password,
       showPassword: s.showPassword,
       showPasswordLabel: s.showPassword ? 'Hide' : 'Show',
@@ -1023,7 +1023,7 @@ class Component extends DCLogic {
       notSigninLoading: !s.signinLoading,
       signinBtnBg: signinEnabled ? '#07478C' : '#94A3B8',
       signinBtnCursor: signinEnabled ? 'pointer' : 'not-allowed',
-      onEmail: function(e) { this.setState({ email: e.target.value }); }.bind(this),
+      onPhone: function(e) { this.setState({ phone: e.target.value }); }.bind(this),
       onPassword: function(e) { this.setState({ password: e.target.value }); }.bind(this),
       onTogglePw: function() { this.setState(function(sv) { return { showPassword: !sv.showPassword }; }); }.bind(this),
       onSignin: function() { if (signinEnabled) this.simulateLoad('signinLoading', 'otp'); }.bind(this),
@@ -1248,7 +1248,7 @@ class Component extends DCLogic {
 
       // success
       onDone: function() {
-        this.setState({ screen: 'signin', email: '', password: '', otp: ['','','','','',''], selectedPreset: null, topupAmount: '', fromTopup: false });
+        this.setState({ screen: 'signin', phone: '', password: '', otp: ['','','','','',''], selectedPreset: null, topupAmount: '', fromTopup: false });
       }.bind(this),
     };
   }
