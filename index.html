@@ -12,11 +12,11 @@
   <link rel="stylesheet" href="./style.css">
 </helmet>
 
-<div style="min-height: 100vh; background: #F1F5F9; font-family: 'Inter', system-ui, sans-serif; color: #0F172A;">
+<div style="height: {{ outerHeight }}; min-height: 100vh; background: {{ outerBg }}; overflow: {{ outerOverflow }}; font-family: 'Inter', system-ui, sans-serif; color: #0F172A;">
 
   <!-- ── HEADER ─────────────────────────────────────────────────── -->
-  <header style="background: white; border-bottom: 1px solid #E2E8F0; height: 60px; display: flex; align-items: center; padding: {{ headerPadding }}; justify-content: space-between; position: sticky; top: 0; z-index: 10;">
-    <img src="assets/kalabash-logo.png" style="height: 26px; display: block;" alt="Kalabash">
+  <header style="background: white; border-bottom: 1px solid #E2E8F0; height: 60px; display: {{ headerDisplay }}; align-items: center; padding: {{ headerPadding }}; justify-content: space-between; position: sticky; top: 0; z-index: 10;">
+    <img src="images/wallet.svg" style="height: 26px; display: block;" alt="Kalabash">
     <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #64748B; font-weight: 500;">
       <svg width="13" height="15" viewBox="0 0 13 15" fill="none">
         <rect x="0.75" y="5.25" width="11.5" height="9" rx="1.75" stroke="#22C55E" stroke-width="1.5"/>
@@ -34,7 +34,7 @@
         <div style="display: flex; align-items: center; gap: 10px;">
           <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 14px; color: white;">T</div>
           <div style="text-align: left;">
-            <div style="font-size: 11px; color: rgba(255,255,255,0.55); font-weight: 500;">TechMart Store</div>
+            <div style="font-size: 11px; color: rgba(255,255,255,0.55); font-weight: 500;">Wakanow</div>
             <div style="font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: white; letter-spacing: -0.02em;">₦25,000.00</div>
           </div>
         </div>
@@ -62,60 +62,37 @@
   </sc-if>
 
   <!-- ── MAIN GRID ──────────────────────────────────────────────── -->
-  <main style="max-width: {{ mainMaxWidth }}; margin: 0 auto; padding: {{ mainPadding }}; display: grid; grid-template-columns: {{ gridCols }}; gap: {{ mainGap }}; align-items: start;">
+  <main style="max-width: {{ mainMaxWidth }}; margin: 0 auto; padding: {{ mainPadding }}; display: grid; grid-template-columns: {{ gridCols }}; gap: {{ mainGap }}; align-items: {{ mainAlignItems }}; height: {{ mainHeight }};">
 
     <!-- ── LEFT: Order Summary ──────────────────────────────────── -->
     <div style="background: #07478C; border-radius: 18px; padding: 32px; color: white; position: sticky; top: 80px; display: {{ leftSidebarDisplay }};">
 
       <!-- Merchant -->
       <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 28px;">
-        <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 20px; color: white; flex-shrink: 0; letter-spacing: -0.02em;">T</div>
+        <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 20px; color: white; flex-shrink: 0; letter-spacing: -0.02em;">W</div>
         <div>
           <div style="font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.09em; font-weight: 600; margin-bottom: 3px;">Merchant</div>
-          <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; color: white; letter-spacing: -0.02em;">TechMart Store</div>
+          <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; color: white; letter-spacing: -0.02em;">Wakanow</div>
         </div>
       </div>
 
       <div style="height: 1px; background: rgba(255,255,255,0.12); margin-bottom: 22px;"></div>
 
-      <div style="font-size: 10px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 16px;">Order summary</div>
+      <div style="font-size: 10px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 20px;">Payment summary</div>
 
-      <!-- Items -->
-      <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-          <div>
-            <div style="font-size: 13.5px; color: rgba(255,255,255,0.9); font-weight: 500; line-height: 1.3;">MacBook Pro Stand</div>
-            <div style="font-size: 11.5px; color: rgba(255,255,255,0.45); margin-top: 3px;">Qty: 1</div>
-          </div>
-          <div style="font-size: 13.5px; color: white; font-weight: 600; white-space: nowrap; flex-shrink: 0;">₦12,000.00</div>
+      <!-- Summary rows -->
+      <div style="display: flex; flex-direction: column; gap: 0; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <span style="font-size: 13px; color: rgba(255,255,255,0.55);">Product narration</span>
+          <span style="font-size: 13.5px; color: white; font-weight: 600;">ABV - LOS</span>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-          <div>
-            <div style="font-size: 13.5px; color: rgba(255,255,255,0.9); font-weight: 500; line-height: 1.3;">USB-C Hub Pro</div>
-            <div style="font-size: 11.5px; color: rgba(255,255,255,0.45); margin-top: 3px;">Qty: 2</div>
-          </div>
-          <div style="font-size: 13.5px; color: white; font-weight: 600; white-space: nowrap; flex-shrink: 0;">₦8,000.00</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <span style="font-size: 13px; color: rgba(255,255,255,0.55);">Currency</span>
+          <span style="font-size: 13.5px; color: white; font-weight: 600;">NGN</span>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;">
-          <div>
-            <div style="font-size: 13.5px; color: rgba(255,255,255,0.9); font-weight: 500; line-height: 1.3;">Premium Laptop Bag</div>
-            <div style="font-size: 11.5px; color: rgba(255,255,255,0.45); margin-top: 3px;">Qty: 1</div>
-          </div>
-          <div style="font-size: 13.5px; color: white; font-weight: 600; white-space: nowrap; flex-shrink: 0;">₦5,000.00</div>
-        </div>
-      </div>
-
-      <div style="height: 1px; background: rgba(255,255,255,0.12); margin-bottom: 18px;"></div>
-
-      <!-- Subtotals -->
-      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px;">
-        <div style="display: flex; justify-content: space-between;">
-          <span style="font-size: 13px; color: rgba(255,255,255,0.55);">Subtotal</span>
-          <span style="font-size: 13px; color: rgba(255,255,255,0.85);">₦25,000.00</span>
-        </div>
-        <div style="display: flex; justify-content: space-between;">
-          <span style="font-size: 13px; color: rgba(255,255,255,0.55);">Delivery</span>
-          <span style="font-size: 13px; color: #54D8FF; font-weight: 600;">Free</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0;">
+          <span style="font-size: 13px; color: rgba(255,255,255,0.55);">Amount</span>
+          <span style="font-size: 13.5px; color: white; font-weight: 600;">₦25,000.00</span>
         </div>
       </div>
 
@@ -136,74 +113,81 @@
     </div>
 
     <!-- ── RIGHT: Step Panel ────────────────────────────────────── -->
-    <div style="background: white; border-radius: {{ rightRadius }}; border: 1px solid #E2E8F0; padding: {{ rightPadding }}; box-shadow: 0 1px 3px rgba(0,0,0,.04); min-height: 520px;">
+    <div style="background: white; border-radius: {{ rightRadius }}; border: {{ rightBorder }}; padding: {{ rightPadding }}; box-shadow: {{ rightBoxShadow }}; min-height: {{ rightMinHeight }}; height: {{ rightHeight }}; overflow: {{ rightOverflow }};">
 
       <!-- ═══════════════ SCREEN 1: SIGN IN ═══════════════ -->
       <sc-if value="{{ isSignin }}" hint-placeholder-val="{{ true }}">
-        <div style="animation: fadeUp 0.28s ease;">
+        <div style="display: flex; height: 100%; animation: fadeUp 0.28s ease;">
 
-          <!-- Brand badge -->
-          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
-            <div style="width: 40px; height: 40px; background: #07478C; border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <svg width="20" height="17" viewBox="0 0 20 17" fill="none">
-                <rect x="1" y="3.5" width="18" height="12" rx="2.5" stroke="white" stroke-width="1.5"/>
-                <path d="M1 7.5h18" stroke="white" stroke-width="1.5"/>
-                <circle cx="15" cy="11.5" r="1.5" fill="white"/>
-              </svg>
+          <!-- Left: form area -->
+          <div style="flex: 0 0 46%; padding: {{ signinFormPadding }}; display: flex; flex-direction: column; justify-content: center; min-width: 0; overflow-y: auto;">
+            <img src="images/wallet.svg" style="height: 30px; display: block; margin-bottom: 48px; align-self: flex-start;" alt="Kalabash">
+
+            <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 28px; color: #0F172A; letter-spacing: -0.03em; margin-bottom: 8px;">Sign in to your account.</div>
+            <div style="font-size: 13.5px; color: #64748B; margin-bottom: 36px; line-height: 1.5;">Enter your phone number and password to continue.</div>
+
+            <!-- Phone number -->
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 7px; letter-spacing: 0.01em;">Phone number</label>
+              <input
+                type="tel"
+                value="{{ phone }}"
+                onChange="{{ onPhone }}"
+                placeholder="08012345678"
+                style="width: 100%; height: 50px; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 0 16px; font-size: 15px; color: #0F172A; background: #FAFAFA; transition: all 0.15s;"
+                style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.09);"
+              ></input>
             </div>
-            <div>
-              <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; color: #0F172A; letter-spacing: -0.02em;">Kalabash Wallet</div>
-              <div style="font-size: 11.5px; color: #94A3B8; margin-top: 1px; font-weight: 500;">Secure checkout</div>
+
+            <!-- Password -->
+            <div style="margin-bottom: 32px;">
+              <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 7px; letter-spacing: 0.01em;">Password</label>
+              <div style="position: relative;">
+                <input
+                  type="{{ passwordType }}"
+                  value="{{ password }}"
+                  onChange="{{ onPassword }}"
+                  placeholder="Your wallet password"
+                  style="width: 100%; height: 50px; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 0 48px 0 16px; font-size: 15px; color: #0F172A; background: #FAFAFA; transition: all 0.15s;"
+                  style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.09);"
+                ></input>
+                <button onClick="{{ onTogglePw }}" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #94A3B8; display: flex; align-items: center; background: none; border: none; padding: 0;">
+                  <sc-if value="{{ notShowPassword }}" hint-placeholder-val="{{ true }}">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </sc-if>
+                  <sc-if value="{{ showPassword }}" hint-placeholder-val="{{ false }}">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>
+                    </svg>
+                  </sc-if>
+                </button>
+              </div>
             </div>
+
+            <!-- Sign in button -->
+            <button onClick="{{ onSignin }}" style="width: 100%; height: 52px; background: {{ signinBtnBg }}; color: white; border-radius: 13px; font-size: 15.5px; font-weight: 700; cursor: {{ signinBtnCursor }}; display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Sora', sans-serif; letter-spacing: -0.01em; transition: opacity 0.15s; border: none;">
+              <sc-if value="{{ signinLoading }}" hint-placeholder-val="{{ false }}">
+                <div style="width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite;"></div>
+              </sc-if>
+              <sc-if value="{{ notSigninLoading }}" hint-placeholder-val="{{ true }}">
+                Sign in
+              </sc-if>
+            </button>
           </div>
 
-          <div style="font-size: 14px; color: #64748B; margin-bottom: 36px; line-height: 1.5;">
-            Sign in to complete your payment at <strong style="color: #0F172A; font-weight: 600;">TechMart Store</strong>
-          </div>
-
-          <!-- Phone number -->
-          <div style="margin-bottom: 20px;">
-            <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 7px; letter-spacing: 0.01em;">Phone number</label>
-            <input
-              type="tel"
-              value="{{ phone }}"
-              onChange="{{ onPhone }}"
-              placeholder="08012345678"
-              style="width: 100%; height: 50px; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 0 16px; font-size: 15px; color: #0F172A; background: #FAFAFA; transition: all 0.15s;"
-              style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.09);"
-            ></input>
-          </div>
-
-          <!-- Password -->
-          <div style="margin-bottom: 10px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px;">
-              <label style="font-size: 13px; font-weight: 600; color: #374151; letter-spacing: 0.01em;">Password</label>
-              <button onClick="{{ onTogglePw }}" style="font-size: 12.5px; color: #07478C; font-weight: 600; cursor: pointer; font-family: inherit;">{{ showPasswordLabel }}</button>
+          <!-- Right: full-height image with gradient overlay (desktop only) -->
+          <sc-if value="{{ signinDesktop }}" hint-placeholder-val="{{ true }}">
+            <div style="flex: 1; position: relative; overflow: hidden; margin: 32px 32px 32px 0; border-radius: 18px; display: {{ signinDesktopDisplay }}; background: #060D1F;">
+              <img src="images/mockup.png" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;" alt="Kalabash wallet mockup">
+              <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(4,18,52,0.95) 0%, rgba(4,18,52,0.55) 38%, transparent 68%);"></div>
+              <div style="position: absolute; bottom: 56px; left: 0; right: 0; text-align: center; padding: 0 52px; z-index: 1;">
+                <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 26px; color: white; line-height: 1.3; margin-bottom: 10px; letter-spacing: -0.02em;">The easiest way to pay<br>with your wallet.</div>
+                <div style="font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6;">Secure, fast checkout — powered by Kalabash</div>
+              </div>
             </div>
-            <input
-              type="{{ passwordType }}"
-              value="{{ password }}"
-              onChange="{{ onPassword }}"
-              placeholder="Your wallet password"
-              style="width: 100%; height: 50px; border: 1.5px solid #E2E8F0; border-radius: 10px; padding: 0 16px; font-size: 15px; color: #0F172A; background: #FAFAFA; transition: all 0.15s;"
-              style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.09);"
-            ></input>
-          </div>
-
-          <div style="text-align: right; margin-bottom: 32px;">
-            <button style="font-size: 12.5px; color: #64748B; cursor: pointer; font-family: inherit; font-weight: 500;">Forgot password?</button>
-          </div>
-
-          <!-- Sign in button -->
-          <button onClick="{{ onSignin }}" style="width: 100%; height: 52px; background: {{ signinBtnBg }}; color: white; border-radius: 13px; font-size: 15.5px; font-weight: 700; cursor: {{ signinBtnCursor }}; display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Sora', sans-serif; letter-spacing: -0.01em; transition: opacity 0.15s; margin-bottom: 28px;">
-            <sc-if value="{{ signinLoading }}" hint-placeholder-val="{{ false }}">
-              <div style="width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite;"></div>
-            </sc-if>
-            <sc-if value="{{ notSigninLoading }}" hint-placeholder-val="{{ true }}">
-              Sign in to pay ₦25,000.00
-            </sc-if>
-          </button>
-
+          </sc-if>
 
         </div>
       </sc-if>
@@ -218,62 +202,22 @@
               <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 22px; color: #0F172A; letter-spacing: -0.03em; margin-bottom: 4px;">Review payment</div>
               <div style="font-size: 13.5px; color: #64748B;">Welcome back, <strong style="color: #0F172A;">Vivian Okocha</strong></div>
             </div>
-            <button onClick="{{ onBackSignin }}" style="font-size: 12.5px; color: #94A3B8; cursor: pointer; font-family: inherit; font-weight: 500; padding: 6px 0;">Sign out</button>
+            <button onClick="{{ onBackSignin }}" style="width: 32px; height: 32px; border-radius: 50%; background: #F1F5F9; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748B; flex-shrink: 0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
           </div>
 
-          <!-- Topped up notice -->
-          <sc-if value="{{ justToppedUp }}" hint-placeholder-val="{{ false }}">
-            <div style="background: rgba(34,197,94,0.08); border: 1.5px solid rgba(34,197,94,0.25); border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 20px; animation: fadeUp 0.3s ease;">
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-                <circle cx="7.5" cy="7.5" r="6.75" fill="rgba(34,197,94,0.15)" stroke="#22C55E" stroke-width="1.25"/>
-                <path d="M4.5 7.5l2 2 4-4" stroke="#22C55E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span style="font-size: 13px; font-weight: 600; color: #15803D;">Wallet topped up — your balance has been updated</span>
-            </div>
-          </sc-if>
 
           <!-- Wallet balance card -->
-          <div style="border-radius: 14px; border: 1.5px solid {{ balanceBorderColor }}; background: {{ balanceBg }}; padding: 20px 22px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <div style="border-radius: 14px; border: 1.5px solid {{ balanceBorderColor }}; background: {{ balanceBg }}; padding: 20px 22px; margin-bottom: 24px; display: block;">
             <div>
               <div style="font-size: 11.5px; color: #64748B; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Wallet balance</div>
               <div style="font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 700; color: {{ balanceColor }}; letter-spacing: -0.03em;">{{ walletBal }}</div>
             </div>
-            <!-- status indicator -->
-            <sc-if value="{{ isSufficient }}" hint-placeholder-val="{{ false }}">
-              <div style="display: flex; align-items: center; gap: 6px; background: rgba(34,197,94,0.12); border-radius: 99px; padding: 6px 12px 6px 8px;">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <circle cx="8" cy="8" r="7.25" stroke="#22C55E" stroke-width="1.5"/>
-                  <path d="M5 8.5l2 2 4-4" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span style="font-size: 12px; font-weight: 700; color: #22C55E;">Sufficient</span>
-              </div>
-            </sc-if>
-            <sc-if value="{{ isInsufficient }}" hint-placeholder-val="{{ true }}">
-              <div style="display: flex; align-items: center; gap: 6px; background: rgba(239,68,68,0.10); border-radius: 99px; padding: 6px 12px 6px 8px;">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <circle cx="8" cy="8" r="7.25" stroke="#EF4444" stroke-width="1.5"/>
-                  <path d="M8 5v3.5" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/>
-                  <circle cx="8" cy="11" r="0.75" fill="#EF4444"/>
-                </svg>
-                <span style="font-size: 12px; font-weight: 700; color: #EF4444;">Insufficient</span>
-              </div>
-            </sc-if>
           </div>
 
-          <!-- Insufficient: shortage notice -->
-          <sc-if value="{{ isInsufficient }}" hint-placeholder-val="{{ true }}">
-            <div style="background: #FFF7ED; border: 1.5px solid #FED7AA; border-radius: 12px; padding: 16px 18px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 12px;">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink: 0; margin-top: 1px;">
-                <path d="M9 1.5L1.5 15h15L9 1.5z" stroke="#F97316" stroke-width="1.5" stroke-linejoin="round"/>
-                <path d="M9 7.5V10.5" stroke="#F97316" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="9" cy="13" r="0.75" fill="#F97316"/>
-              </svg>
-              <div>
-                <div style="font-size: 13.5px; font-weight: 600; color: #9A3412; margin-bottom: 3px;">Balance too low</div>
-                <div style="font-size: 12.5px; color: #C2410C; line-height: 1.5;">You need <strong>{{ shortage }}</strong> more to complete this payment. Top up your wallet to continue.</div>
-              </div>
-            </div>
-          </sc-if>
 
           <!-- Order amount row -->
           <div style="border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 18px 22px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center;">
@@ -337,16 +281,16 @@
           <div style="font-size: 13.5px; color: #64748B; margin-bottom: 28px;">Current balance: <strong style="color: #07478C;">{{ walletBal }}</strong> · You need {{ shortage }} more</div>
 
           <!-- Preset chips -->
-          <div style="font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 12px; letter-spacing: 0.01em;">Quick amounts</div>
+          <!-- <div style="font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 12px; letter-spacing: 0.01em;">Quick amounts</div>
           <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px;">
             <button onClick="{{ onPreset5k }}" style="height: 44px; background: {{ p5bg }}; color: {{ p5c }}; border: 1.5px solid {{ p5border }}; border-radius: 10px; font-size: 13.5px; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s;">₦5k</button>
             <button onClick="{{ onPreset10k }}" style="height: 44px; background: {{ p10bg }}; color: {{ p10c }}; border: 1.5px solid {{ p10border }}; border-radius: 10px; font-size: 13.5px; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s;">₦10k</button>
             <button onClick="{{ onPreset20k }}" style="height: 44px; background: {{ p20bg }}; color: {{ p20c }}; border: 1.5px solid {{ p20border }}; border-radius: 10px; font-size: 13.5px; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s;">₦20k</button>
             <button onClick="{{ onPreset50k }}" style="height: 44px; background: {{ p50bg }}; color: {{ p50c }}; border: 1.5px solid {{ p50border }}; border-radius: 10px; font-size: 13.5px; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.15s;">₦50k</button>
-          </div>
+          </div> -->
 
           <!-- Custom amount -->
-          <div style="margin-bottom: 24px;">
+          <!-- <div style="margin-bottom: 24px;">
             <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 7px; letter-spacing: 0.01em;">Or enter amount</label>
             <div style="position: relative;">
               <span style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 17px; font-weight: 600; color: #94A3B8; pointer-events: none;">₦</span>
@@ -359,7 +303,7 @@
                 style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.09);"
               ></input>
             </div>
-          </div>
+          </div> -->
 
           <!-- Bank transfer details -->
           <div style="font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 10px; letter-spacing: 0.01em;">Transfer to your wallet account</div>
@@ -416,7 +360,7 @@
               <div style="width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite;"></div>
             </sc-if>
             <sc-if value="{{ notTopupLoading }}" hint-placeholder-val="{{ true }}">
-              Continue to verify payment
+              I have made the transfer
             </sc-if>
           </button>
         </div>
@@ -504,7 +448,7 @@
 
           <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 22px; color: #0F172A; letter-spacing: -0.03em; margin-bottom: 8px;">Enter wallet PIN</div>
           <div style="font-size: 13.5px; color: #64748B; margin-bottom: 36px; line-height: 1.6;">
-            Authorise payment of <strong style="color: #0F172A;">₦25,000.00</strong> to TechMart Store
+            Authorise payment of <strong style="color: #0F172A;">₦25,000.00</strong> to Wakanow
           </div>
 
           <!-- PIN boxes -->
@@ -530,129 +474,6 @@
             </sc-if>
           </button>
 
-          <div style="text-align: center; font-size: 12.5px; color: #94A3B8;">
-            Forgot your PIN? <button onClick="{{ onGoResetPin }}" style="color: #07478C; font-weight: 600; cursor: pointer; font-size: 12.5px; font-family: inherit;">Reset PIN →</button>
-          </div>
-        </div>
-      </sc-if>
-
-      <!-- ═══════════════ SCREEN: RESET OTP ═══════════════ -->
-      <sc-if value="{{ isResetOtp }}" hint-placeholder-val="{{ false }}">
-        <div style="animation: fadeUp 0.28s ease;">
-
-          <button onClick="{{ onBackFromResetOtp }}" style="display: flex; align-items: center; gap: 6px; color: #64748B; font-size: 13px; font-weight: 500; margin-bottom: 36px; cursor: pointer; font-family: inherit;">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Back
-          </button>
-
-          <div style="width: 60px; height: 60px; background: #FFF7ED; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px;">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <rect x="4" y="13" width="20" height="13" rx="3" stroke="#F97316" stroke-width="1.8"/>
-              <path d="M9 13V9a5 5 0 0110 0v4" stroke="#F97316" stroke-width="1.8" stroke-linecap="round"/>
-              <path d="M9 13V9a5 5 0 0110 0v4" stroke="#F97316" stroke-width="1.8" stroke-linecap="round"/>
-              <circle cx="14" cy="20" r="1.5" fill="#F97316"/>
-              <path d="M10 8l-2-2M18 8l2-2" stroke="#F97316" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-
-          <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 22px; color: #0F172A; letter-spacing: -0.03em; margin-bottom: 8px;">Verify your identity</div>
-          <div style="font-size: 13.5px; color: #64748B; margin-bottom: 36px; line-height: 1.6;">
-            To reset your PIN, enter the 6-digit code sent to<br>
-            <strong style="color: #0F172A;">+234 *** *** 8901</strong>
-          </div>
-
-          <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 36px;">
-            <input id="rotp-0" value="{{ rotp0 }}" onChange="{{ onRotp0 }}" onKeyDown="{{ onRotpKey0 }}" maxLength="1" inputMode="numeric" style="width: {{ otpBoxW }}; height: {{ otpBoxH }}; text-align: center; font-size: {{ otpFontSize }}; font-weight: 700; border: 2px solid {{ rotp0border }}; border-radius: 13px; color: #07478C; background: {{ rotp0bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-            <input id="rotp-1" value="{{ rotp1 }}" onChange="{{ onRotp1 }}" onKeyDown="{{ onRotpKey1 }}" maxLength="1" inputMode="numeric" style="width: {{ otpBoxW }}; height: {{ otpBoxH }}; text-align: center; font-size: {{ otpFontSize }}; font-weight: 700; border: 2px solid {{ rotp1border }}; border-radius: 13px; color: #07478C; background: {{ rotp1bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-            <input id="rotp-2" value="{{ rotp2 }}" onChange="{{ onRotp2 }}" onKeyDown="{{ onRotpKey2 }}" maxLength="1" inputMode="numeric" style="width: {{ otpBoxW }}; height: {{ otpBoxH }}; text-align: center; font-size: {{ otpFontSize }}; font-weight: 700; border: 2px solid {{ rotp2border }}; border-radius: 13px; color: #07478C; background: {{ rotp2bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-            <input id="rotp-3" value="{{ rotp3 }}" onChange="{{ onRotp3 }}" onKeyDown="{{ onRotpKey3 }}" maxLength="1" inputMode="numeric" style="width: {{ otpBoxW }}; height: {{ otpBoxH }}; text-align: center; font-size: {{ otpFontSize }}; font-weight: 700; border: 2px solid {{ rotp3border }}; border-radius: 13px; color: #07478C; background: {{ rotp3bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-            <input id="rotp-4" value="{{ rotp4 }}" onChange="{{ onRotp4 }}" onKeyDown="{{ onRotpKey4 }}" maxLength="1" inputMode="numeric" style="width: {{ otpBoxW }}; height: {{ otpBoxH }}; text-align: center; font-size: {{ otpFontSize }}; font-weight: 700; border: 2px solid {{ rotp4border }}; border-radius: 13px; color: #07478C; background: {{ rotp4bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-            <input id="rotp-5" value="{{ rotp5 }}" onChange="{{ onRotp5 }}" onKeyDown="{{ onRotpKey5 }}" maxLength="1" inputMode="numeric" style="width: {{ otpBoxW }}; height: {{ otpBoxH }}; text-align: center; font-size: {{ otpFontSize }}; font-weight: 700; border: 2px solid {{ rotp5border }}; border-radius: 13px; color: #07478C; background: {{ rotp5bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-          </div>
-
-          <button onClick="{{ onVerifyResetOtp }}" style="width: 100%; height: 52px; background: {{ resetOtpBtnBg }}; color: white; border-radius: 13px; font-size: 15.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Sora', sans-serif; letter-spacing: -0.01em; margin-bottom: 22px; cursor: pointer; transition: background 0.15s;">
-            <sc-if value="{{ otpLoading }}" hint-placeholder-val="{{ false }}">
-              <div style="width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite;"></div>
-            </sc-if>
-            <sc-if value="{{ notOtpLoading }}" hint-placeholder-val="{{ true }}">Verify account</sc-if>
-          </button>
-
-          <div style="text-align: center; font-size: 13px; color: #94A3B8;">
-            <sc-if value="{{ resetOtpTimerActive }}" hint-placeholder-val="{{ true }}">
-              Resend code in <strong style="color: #475569;">{{ resetTimerLabel }}</strong>
-            </sc-if>
-            <sc-if value="{{ resetOtpTimerInactive }}" hint-placeholder-val="{{ false }}">
-              Didn't receive it?
-              <button onClick="{{ onResendResetOtp }}" style="color: #07478C; font-weight: 700; cursor: pointer; font-size: 13px; font-family: inherit; margin-left: 4px;">Resend now</button>
-            </sc-if>
-          </div>
-        </div>
-      </sc-if>
-
-      <!-- ═══════════════ SCREEN: NEW PIN ═══════════════ -->
-      <sc-if value="{{ isNewPin }}" hint-placeholder-val="{{ false }}">
-        <div style="animation: fadeUp 0.28s ease;">
-
-          <button onClick="{{ onBackFromNewPin }}" style="display: flex; align-items: center; gap: 6px; color: #64748B; font-size: 13px; font-weight: 500; margin-bottom: 36px; cursor: pointer; font-family: inherit;">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Back
-          </button>
-
-          <div style="width: 60px; height: 60px; background: #EFF6FF; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px;">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <rect x="4" y="13" width="20" height="13" rx="3" stroke="#07478C" stroke-width="1.8"/>
-              <path d="M9 13V9a5 5 0 0110 0v4" stroke="#07478C" stroke-width="1.8" stroke-linecap="round"/>
-              <circle cx="14" cy="20" r="1.5" fill="#07478C"/>
-              <path d="M18 5l2 2-5 5" stroke="#07478C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-
-          <div style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 22px; color: #0F172A; letter-spacing: -0.03em; margin-bottom: 6px;">Create new PIN</div>
-          <div style="font-size: 13.5px; color: #64748B; margin-bottom: 32px;">Choose a 4-digit PIN you'll use to approve payments.</div>
-
-          <!-- New PIN -->
-          <div style="margin-bottom: 24px;">
-            <div style="font-size: 12.5px; font-weight: 600; color: #374151; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px;">New PIN</div>
-            <div style="display: flex; gap: 12px; justify-content: center;">
-              <input id="np-0" type="password" value="{{ np0 }}" onChange="{{ onNp0 }}" onKeyDown="{{ onNpKey0 }}" maxLength="1" inputMode="numeric" style="width: {{ npBoxW }}; height: {{ npBoxH }}; text-align: center; font-size: {{ npFontSize }}; font-weight: 700; border: 2px solid {{ np0border }}; border-radius: 14px; color: #07478C; background: {{ np0bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-              <input id="np-1" type="password" value="{{ np1 }}" onChange="{{ onNp1 }}" onKeyDown="{{ onNpKey1 }}" maxLength="1" inputMode="numeric" style="width: {{ npBoxW }}; height: {{ npBoxH }}; text-align: center; font-size: {{ npFontSize }}; font-weight: 700; border: 2px solid {{ np1border }}; border-radius: 14px; color: #07478C; background: {{ np1bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-              <input id="np-2" type="password" value="{{ np2 }}" onChange="{{ onNp2 }}" onKeyDown="{{ onNpKey2 }}" maxLength="1" inputMode="numeric" style="width: {{ npBoxW }}; height: {{ npBoxH }}; text-align: center; font-size: {{ npFontSize }}; font-weight: 700; border: 2px solid {{ np2border }}; border-radius: 14px; color: #07478C; background: {{ np2bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-              <input id="np-3" type="password" value="{{ np3 }}" onChange="{{ onNp3 }}" onKeyDown="{{ onNpKey3 }}" maxLength="1" inputMode="numeric" style="width: {{ npBoxW }}; height: {{ npBoxH }}; text-align: center; font-size: {{ npFontSize }}; font-weight: 700; border: 2px solid {{ np3border }}; border-radius: 14px; color: #07478C; background: {{ np3bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-            </div>
-          </div>
-
-          <!-- Confirm PIN -->
-          <div style="margin-bottom: 16px;">
-            <div style="font-size: 12.5px; font-weight: 600; color: #374151; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px;">Confirm PIN</div>
-            <div style="display: flex; gap: 12px; justify-content: center;">
-              <input id="cp-0" type="password" value="{{ cp0 }}" onChange="{{ onCp0 }}" onKeyDown="{{ onCpKey0 }}" maxLength="1" inputMode="numeric" style="width: {{ npBoxW }}; height: {{ npBoxH }}; text-align: center; font-size: {{ npFontSize }}; font-weight: 700; border: 2px solid {{ cp0border }}; border-radius: 14px; color: #07478C; background: {{ cp0bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-              <input id="cp-1" type="password" value="{{ cp1 }}" onChange="{{ onCp1 }}" onKeyDown="{{ onCpKey1 }}" maxLength="1" inputMode="numeric" style="width: {{ npBoxW }}; height: {{ npBoxH }}; text-align: center; font-size: {{ npFontSize }}; font-weight: 700; border: 2px solid {{ cp1border }}; border-radius: 14px; color: #07478C; background: {{ cp1bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-              <input id="cp-2" type="password" value="{{ cp2 }}" onChange="{{ onCp2 }}" onKeyDown="{{ onCpKey2 }}" maxLength="1" inputMode="numeric" style="width: {{ npBoxW }}; height: {{ npBoxH }}; text-align: center; font-size: {{ npFontSize }}; font-weight: 700; border: 2px solid {{ cp2border }}; border-radius: 14px; color: #07478C; background: {{ cp2bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-              <input id="cp-3" type="password" value="{{ cp3 }}" onChange="{{ onCp3 }}" onKeyDown="{{ onCpKey3 }}" maxLength="1" inputMode="numeric" style="width: {{ npBoxW }}; height: {{ npBoxH }}; text-align: center; font-size: {{ npFontSize }}; font-weight: 700; border: 2px solid {{ cp3border }}; border-radius: 14px; color: #07478C; background: {{ cp3bg }}; transition: all 0.12s; font-family: 'Sora', sans-serif;" style-focus="border-color: #07478C; background: white; box-shadow: 0 0 0 4px rgba(7,71,140,0.12);"></input>
-            </div>
-          </div>
-
-          <!-- Mismatch error -->
-          <sc-if value="{{ pinsMismatch }}" hint-placeholder-val="{{ false }}">
-            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 20px; padding: 10px 14px; background: rgba(239,68,68,0.06); border-radius: 9px; border: 1px solid rgba(239,68,68,0.2);">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.25" stroke="#EF4444" stroke-width="1.25"/><path d="M7 4.5V7.5" stroke="#EF4444" stroke-width="1.25" stroke-linecap="round"/><circle cx="7" cy="9.5" r="0.625" fill="#EF4444"/></svg>
-              <span style="font-size: 12.5px; color: #DC2626; font-weight: 500;">PINs don't match — please try again</span>
-            </div>
-          </sc-if>
-
-          <sc-if value="{{ pinsMatch }}" hint-placeholder-val="{{ false }}">
-            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 20px; padding: 10px 14px; background: rgba(34,197,94,0.06); border-radius: 9px; border: 1px solid rgba(34,197,94,0.2);">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.25" stroke="#22C55E" stroke-width="1.25"/><path d="M4.5 7l1.75 1.75L9.5 5" stroke="#22C55E" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span style="font-size: 12.5px; color: #16A34A; font-weight: 500;">PINs match</span>
-            </div>
-          </sc-if>
-
-          <button onClick="{{ onSaveNewPin }}" style="width: 100%; height: 52px; background: {{ savePinBtnBg }}; color: white; border-radius: 13px; font-size: 15.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Sora', sans-serif; letter-spacing: -0.01em; cursor: pointer; transition: background 0.15s;">
-            <sc-if value="{{ newPinLoading }}" hint-placeholder-val="{{ false }}">
-              <div style="width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite;"></div>
-            </sc-if>
-            <sc-if value="{{ notNewPinLoading }}" hint-placeholder-val="{{ true }}">Save new PIN</sc-if>
-          </button>
         </div>
       </sc-if>
 
@@ -670,7 +491,7 @@
 
           <div style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 28px; color: #0F172A; letter-spacing: -0.04em; margin-bottom: 8px;">Payment successful</div>
           <div style="font-size: 14px; color: #64748B; margin-bottom: 32px; line-height: 1.6;">
-            Your payment to <strong style="color: #0F172A;">TechMart Store</strong> was completed
+            Your payment to <strong style="color: #0F172A;">Wakanow</strong> was completed
           </div>
 
           <!-- Amount pill -->
@@ -716,7 +537,7 @@
 
           <!-- Return to store -->
           <button onClick="{{ onDone }}" style="width: 100%; height: 52px; background: #07478C; color: white; border-radius: 13px; font-size: 15.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Sora', sans-serif; letter-spacing: -0.01em; margin-bottom: 16px; cursor: pointer;">
-            Return to TechMart Store
+            Return to Wakanow
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
 
@@ -735,6 +556,51 @@
   </footer>
 
 </div>
+
+<!-- ── TOAST NOTIFICATION ──────────────────────────────────── -->
+<sc-if value="{{ showToast }}" hint-placeholder-val="{{ false }}">
+  <div style="position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 9999; animation: slideDown 0.3s ease; pointer-events: none;">
+    <div style="display: flex; align-items: center; gap: 12px; background: white; border: 1.5px solid rgba(34,197,94,0.35); border-radius: 12px; padding: 12px 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(34,197,94,0.12);">
+      <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(34,197,94,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #22C55E;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+      </div>
+      <div>
+        <div style="font-size: 13px; font-weight: 600; color: #15803D; white-space: nowrap; font-family: 'Inter', sans-serif;">Wallet topped up</div>
+        <div style="font-size: 12px; color: #166534; white-space: nowrap; font-family: 'Inter', sans-serif;">Your balance has been updated</div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+
+<!-- ── INSUFFICIENT BALANCE TOAST ─────────────────────────── -->
+<sc-if value="{{ showInsufficientToast }}" hint-placeholder-val="{{ false }}">
+  <div style="position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 9999; animation: slideDown 0.3s ease;">
+    <div style="display: flex; align-items: center; gap: 12px; background: white; border: 1.5px solid #FED7AA; border-radius: 12px; padding: 12px 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(249,115,22,0.12);">
+      <div style="width: 32px; height: 32px; border-radius: 50%; background: #FFF7ED; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+      <div style="flex: 1;">
+        <div style="font-size: 13px; font-weight: 600; color: #9A3412; white-space: nowrap; font-family: 'Inter', sans-serif;">Balance too low</div>
+        <div style="font-size: 12px; color: #C2410C; white-space: nowrap; font-family: 'Inter', sans-serif;">You need <strong>{{ shortage }}</strong> more. Top up to continue.</div>
+      </div>
+      <button onClick="{{ onDismissInsufficientToast }}" style="width: 24px; height: 24px; border-radius: 50%; background: #FFF7ED; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #C2410C; flex-shrink: 0; margin-left: 4px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</sc-if>
+
 </x-dc>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{
   &quot;$preview&quot;: { &quot;width&quot;: 1200 },
@@ -760,16 +626,12 @@ class Component extends DCLogic {
     topupLoading: false,
     fromTopup: false,
     toppedUpAmount: 0,
+    showToast: false,
+    balanceToastDismissed: false,
     orderExpanded: false,
     windowWidth: typeof window !== 'undefined' ? window.innerWidth : 1200,
     pin: ['', '', '', ''],
     pinLoading: false,
-    resetOtp: ['', '', '', '', '', ''],
-    resetOtpTimer: 30,
-    resetOtpTimerActive: false,
-    newPin: ['', '', '', ''],
-    confirmPin: ['', '', '', ''],
-    newPinLoading: false,
     copied: false,
     copiedTxn: false,
   };
@@ -793,24 +655,10 @@ class Component extends DCLogic {
         if (el) el.focus();
       }, 120);
     }
-    if (this.state.screen === 'resetOtp' && prevState.screen !== 'resetOtp') {
-      setTimeout(() => {
-        const el = document.getElementById('rotp-0');
-        if (el) el.focus();
-      }, 120);
-      this.startResetOtpTimer();
-    }
-    if (this.state.screen === 'newPin' && prevState.screen !== 'newPin') {
-      setTimeout(() => {
-        const el = document.getElementById('np-0');
-        if (el) el.focus();
-      }, 120);
-    }
-  }
+}
 
   componentWillUnmount() {
     if (this._timer) clearInterval(this._timer);
-    if (this._resetTimer) clearInterval(this._resetTimer);
     if (this._resizeHandler) window.removeEventListener('resize', this._resizeHandler);
   }
 
@@ -847,74 +695,6 @@ class Component extends DCLogic {
         const prev = document.getElementById('pin-box-' + (idx - 1));
         if (prev) prev.focus();
       }
-    }
-  }
-
-  handleResetOtp(idx, val) {
-    const digit = val.replace(/\D/g, '').slice(-1);
-    const otp = [...this.state.resetOtp];
-    otp[idx] = digit;
-    this.setState({ resetOtp: otp }, () => {
-      if (digit && idx < 5) {
-        const next = document.getElementById('rotp-' + (idx + 1));
-        if (next) next.focus();
-      }
-    });
-  }
-
-  handleResetOtpKey(idx, e) {
-    if (e.key === 'Backspace' && !this.state.resetOtp[idx] && idx > 0) {
-      const prev = document.getElementById('rotp-' + (idx - 1));
-      if (prev) prev.focus();
-    }
-  }
-
-  startResetOtpTimer() {
-    if (this._resetTimer) clearInterval(this._resetTimer);
-    this.setState({ resetOtpTimer: 30, resetOtpTimerActive: true });
-    this._resetTimer = setInterval(() => {
-      this.setState(s => {
-        if (s.resetOtpTimer <= 1) { clearInterval(this._resetTimer); return { resetOtpTimer: 0, resetOtpTimerActive: false }; }
-        return { resetOtpTimer: s.resetOtpTimer - 1 };
-      });
-    }, 1000);
-  }
-
-  handleNewPin(idx, val) {
-    const digit = val.replace(/\D/g, '').slice(-1);
-    const pin = [...this.state.newPin];
-    pin[idx] = digit;
-    this.setState({ newPin: pin }, () => {
-      if (digit && idx < 3) {
-        const next = document.getElementById('np-' + (idx + 1));
-        if (next) next.focus();
-      }
-    });
-  }
-
-  handleNewPinKey(idx, e) {
-    if (e.key === 'Backspace' && !this.state.newPin[idx] && idx > 0) {
-      const prev = document.getElementById('np-' + (idx - 1));
-      if (prev) prev.focus();
-    }
-  }
-
-  handleConfirmPin(idx, val) {
-    const digit = val.replace(/\D/g, '').slice(-1);
-    const pin = [...this.state.confirmPin];
-    pin[idx] = digit;
-    this.setState({ confirmPin: pin }, () => {
-      if (digit && idx < 3) {
-        const next = document.getElementById('cp-' + (idx + 1));
-        if (next) next.focus();
-      }
-    });
-  }
-
-  handleConfirmPinKey(idx, e) {
-    if (e.key === 'Backspace' && !this.state.confirmPin[idx] && idx > 0) {
-      const prev = document.getElementById('cp-' + (idx - 1));
-      if (prev) prev.focus();
     }
   }
 
@@ -962,7 +742,7 @@ class Component extends DCLogic {
 
     const otpFull = s.otp.every(function(d) { return d !== ''; });
     const topupNum = parseFloat(String(s.topupAmount).replace(/,/g, '')) || 0;
-    const topupValid = topupNum >= 100;
+    const topupValid = true;
     const signinEnabled = !!s.phone && !!s.password;
 
     return {
@@ -970,13 +750,26 @@ class Component extends DCLogic {
       isMobile: s.windowWidth < 768,
       isDesktop: s.windowWidth >= 768,
       headerPadding: s.windowWidth < 768 ? '0 18px' : '0 40px',
-      mainMaxWidth: s.windowWidth < 768 ? '100%' : '980px',
-      mainPadding: s.windowWidth < 768 ? '0 0 40px' : '44px 24px 60px',
-      mainGap: s.windowWidth < 768 ? '0' : '28px',
-      gridCols: s.windowWidth < 768 ? '1fr' : '340px 1fr',
-      leftSidebarDisplay: s.windowWidth < 768 ? 'none' : 'block',
-      rightPadding: s.windowWidth < 768 ? '20px 18px 28px' : '44px 44px 40px',
-      rightRadius: s.windowWidth < 768 ? '0' : '18px',
+      headerDisplay: s.screen === 'signin' ? 'none' : 'flex',
+      outerBg: s.screen === 'signin' ? 'white' : '#F1F5F9',
+      outerHeight: s.screen === 'signin' ? '100vh' : 'auto',
+      outerOverflow: s.screen === 'signin' ? 'hidden' : 'visible',
+      mainMaxWidth: s.screen === 'signin' ? '100%' : (s.windowWidth < 768 ? '100%' : '980px'),
+      mainPadding: s.screen === 'signin' ? '0' : (s.windowWidth < 768 ? '0 0 40px' : '44px 24px 60px'),
+      mainGap: s.screen === 'signin' ? '0' : (s.windowWidth < 768 ? '0' : '28px'),
+      mainHeight: s.screen === 'signin' ? '100vh' : 'auto',
+      mainAlignItems: s.screen === 'signin' ? 'stretch' : 'start',
+      gridCols: s.windowWidth < 768 ? '1fr' : (s.screen === 'signin' ? '1fr' : '340px 1fr'),
+      leftSidebarDisplay: (s.windowWidth < 768 || s.screen === 'signin') ? 'none' : 'block',
+      rightPadding: s.windowWidth < 768 ? '20px 18px 28px' : (s.screen === 'signin' ? '0' : '44px 44px 40px'),
+      rightRadius: s.screen === 'signin' ? '0' : (s.windowWidth < 768 ? '0' : '18px'),
+      rightBorder: s.screen === 'signin' ? 'none' : '1px solid #E2E8F0',
+      rightBoxShadow: s.screen === 'signin' ? 'none' : '0 1px 3px rgba(0,0,0,.04)',
+      rightOverflow: s.screen === 'signin' ? 'hidden' : 'visible',
+      rightMinHeight: s.screen === 'signin' ? '0' : '520px',
+      rightHeight: s.screen === 'signin' ? '100%' : 'auto',
+      signinDesktop: s.screen === 'signin' && s.windowWidth >= 768,
+      signinFormPadding: s.windowWidth < 768 ? '32px 20px 40px' : '0 56px',
       mainBg: s.windowWidth < 768 ? 'transparent' : 'white',
       orderExpanded: s.orderExpanded,
       orderChevron: s.orderExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -997,8 +790,6 @@ class Component extends DCLogic {
       isTopup: s.screen === 'topup',
       isOtp: s.screen === 'otp',
       isPin: s.screen === 'pin',
-      isResetOtp: s.screen === 'resetOtp',
-      isNewPin: s.screen === 'newPin',
       isSuccess: s.screen === 'success',
 
       // checkout variants
@@ -1017,7 +808,7 @@ class Component extends DCLogic {
       phone: s.phone,
       password: s.password,
       showPassword: s.showPassword,
-      showPasswordLabel: s.showPassword ? 'Hide' : 'Show',
+      notShowPassword: !s.showPassword,
       passwordType: s.showPassword ? 'text' : 'password',
       signinLoading: s.signinLoading,
       notSigninLoading: !s.signinLoading,
@@ -1026,15 +817,18 @@ class Component extends DCLogic {
       onPhone: function(e) { this.setState({ phone: e.target.value }); }.bind(this),
       onPassword: function(e) { this.setState({ password: e.target.value }); }.bind(this),
       onTogglePw: function() { this.setState(function(sv) { return { showPassword: !sv.showPassword }; }); }.bind(this),
-      onSignin: function() { if (signinEnabled) this.simulateLoad('signinLoading', 'otp'); }.bind(this),
+      onSignin: function() { if (signinEnabled) this.simulateLoad('signinLoading', 'checkout'); }.bind(this),
 
       // checkout
       justToppedUp: s.toppedUpAmount > 0,
+      showToast: s.showToast,
+      showInsufficientToast: s.screen === 'checkout' && isInsufficient && !s.balanceToastDismissed,
+      onDismissInsufficientToast: function() { this.setState({ balanceToastDismissed: true }); }.bind(this),
       payLoading: s.payLoading,
       notPayLoading: !s.payLoading,
       onPay: function() { this.simulateLoad('payLoading', 'pin'); }.bind(this),
       onTopup: function() { this.setState({ screen: 'topup', fromTopup: true }); }.bind(this),
-      onBackSignin: function() { this.setState({ screen: 'signin' }); }.bind(this),
+      onBackSignin: function() { this.setState({ screen: 'signin', balanceToastDismissed: false }); }.bind(this),
 
       // topup
       topupAmount: s.topupAmount,
@@ -1061,11 +855,12 @@ class Component extends DCLogic {
       onPreset50k: function() { this.setState({ selectedPreset: 50000, topupAmount: '50,000' }); }.bind(this),
       onTopupAmt: function(e) { this.setState({ topupAmount: e.target.value, selectedPreset: null }); }.bind(this),
       onTopupContinue: function() {
-        if (!topupValid) return;
-        const addedAmount = parseFloat(String(s.topupAmount).replace(/,/g, '')) || 0;
+        const currentBal = (this.props.balanceLow !== false ? 20000 : 30000) + s.toppedUpAmount;
+        const needed = Math.max(0, 25000 - currentBal) + 1000;
         this.setState({ topupLoading: true });
         setTimeout(function() {
-          this.setState({ topupLoading: false, screen: 'checkout', toppedUpAmount: s.toppedUpAmount + addedAmount, topupAmount: '', selectedPreset: null });
+          this.setState({ topupLoading: false, screen: 'checkout', toppedUpAmount: s.toppedUpAmount + needed, topupAmount: '', selectedPreset: null, showToast: true });
+          setTimeout(function() { this.setState({ showToast: false }); }.bind(this), 3000);
         }.bind(this), 1200);
       }.bind(this),
       copied: s.copied,
@@ -1122,85 +917,6 @@ class Component extends DCLogic {
         }.bind(this), 1200);
       }.bind(this),
       onBackFromPin: function() { this.setState({ screen: 'checkout', pin: ['', '', '', ''] }); }.bind(this),
-      onGoResetPin: function() { this.setState({ screen: 'resetOtp', resetOtp: ['','','','','',''], newPin: ['','','',''], confirmPin: ['','',''] }); }.bind(this),
-
-      // reset otp
-      rotp0: s.resetOtp[0], rotp1: s.resetOtp[1], rotp2: s.resetOtp[2],
-      rotp3: s.resetOtp[3], rotp4: s.resetOtp[4], rotp5: s.resetOtp[5],
-      resetOtpFull: s.resetOtp.every(function(d) { return d !== ''; }),
-      resetOtpTimer: s.resetOtpTimer,
-      resetOtpTimerActive: s.resetOtpTimerActive,
-      resetOtpTimerInactive: !s.resetOtpTimerActive,
-      resetTimerLabel: '0:' + String(s.resetOtpTimer).padStart(2, '0'),
-      resetOtpBtnBg: s.resetOtp.every(function(d) { return d !== ''; }) ? '#07478C' : '#94A3B8',
-      rotp0bg: s.resetOtp[0] ? '#EFF6FF' : '#F8FAFC', rotp0border: s.resetOtp[0] ? '#07478C' : '#E2E8F0',
-      rotp1bg: s.resetOtp[1] ? '#EFF6FF' : '#F8FAFC', rotp1border: s.resetOtp[1] ? '#07478C' : '#E2E8F0',
-      rotp2bg: s.resetOtp[2] ? '#EFF6FF' : '#F8FAFC', rotp2border: s.resetOtp[2] ? '#07478C' : '#E2E8F0',
-      rotp3bg: s.resetOtp[3] ? '#EFF6FF' : '#F8FAFC', rotp3border: s.resetOtp[3] ? '#07478C' : '#E2E8F0',
-      rotp4bg: s.resetOtp[4] ? '#EFF6FF' : '#F8FAFC', rotp4border: s.resetOtp[4] ? '#07478C' : '#E2E8F0',
-      rotp5bg: s.resetOtp[5] ? '#EFF6FF' : '#F8FAFC', rotp5border: s.resetOtp[5] ? '#07478C' : '#E2E8F0',
-      onRotp0: function(e) { this.handleResetOtp(0, e.target.value); }.bind(this),
-      onRotp1: function(e) { this.handleResetOtp(1, e.target.value); }.bind(this),
-      onRotp2: function(e) { this.handleResetOtp(2, e.target.value); }.bind(this),
-      onRotp3: function(e) { this.handleResetOtp(3, e.target.value); }.bind(this),
-      onRotp4: function(e) { this.handleResetOtp(4, e.target.value); }.bind(this),
-      onRotp5: function(e) { this.handleResetOtp(5, e.target.value); }.bind(this),
-      onRotpKey0: function(e) { this.handleResetOtpKey(0, e); }.bind(this),
-      onRotpKey1: function(e) { this.handleResetOtpKey(1, e); }.bind(this),
-      onRotpKey2: function(e) { this.handleResetOtpKey(2, e); }.bind(this),
-      onRotpKey3: function(e) { this.handleResetOtpKey(3, e); }.bind(this),
-      onRotpKey4: function(e) { this.handleResetOtpKey(4, e); }.bind(this),
-      onRotpKey5: function(e) { this.handleResetOtpKey(5, e); }.bind(this),
-      onResendResetOtp: function() { if (!s.resetOtpTimerActive) this.startResetOtpTimer(); }.bind(this),
-      onVerifyResetOtp: function() {
-        if (!s.resetOtp.every(function(d) { return d !== ''; })) return;
-        this.simulateLoad('otpLoading', 'newPin');
-      }.bind(this),
-      onBackFromResetOtp: function() { this.setState({ screen: 'pin', resetOtp: ['','','','','',''] }); }.bind(this),
-
-      // new pin
-      np0: s.newPin[0], np1: s.newPin[1], np2: s.newPin[2], np3: s.newPin[3],
-      cp0: s.confirmPin[0], cp1: s.confirmPin[1], cp2: s.confirmPin[2], cp3: s.confirmPin[3],
-      newPinFull: s.newPin.every(function(d) { return d !== ''; }),
-      confirmPinFull: s.confirmPin.every(function(d) { return d !== ''; }),
-      newPinLoading: s.newPinLoading,
-      notNewPinLoading: !s.newPinLoading,
-      pinsMatch: s.newPin.join('') === s.confirmPin.join('') && s.newPin.every(function(d) { return d !== ''; }) && s.confirmPin.every(function(d) { return d !== ''; }),
-      pinsMismatch: s.newPin.join('') !== s.confirmPin.join('') && s.confirmPin.every(function(d) { return d !== ''; }),
-      savePinBtnBg: (s.newPin.join('') === s.confirmPin.join('') && s.newPin.every(function(d) { return d !== ''; })) ? '#07478C' : '#94A3B8',
-      np0bg: s.newPin[0] ? '#EFF6FF' : '#F8FAFC', np0border: s.newPin[0] ? '#07478C' : '#E2E8F0',
-      np1bg: s.newPin[1] ? '#EFF6FF' : '#F8FAFC', np1border: s.newPin[1] ? '#07478C' : '#E2E8F0',
-      np2bg: s.newPin[2] ? '#EFF6FF' : '#F8FAFC', np2border: s.newPin[2] ? '#07478C' : '#E2E8F0',
-      np3bg: s.newPin[3] ? '#EFF6FF' : '#F8FAFC', np3border: s.newPin[3] ? '#07478C' : '#E2E8F0',
-      cp0bg: s.confirmPin[0] ? '#EFF6FF' : '#F8FAFC', cp0border: s.confirmPin[0] ? '#07478C' : '#E2E8F0',
-      cp1bg: s.confirmPin[1] ? '#EFF6FF' : '#F8FAFC', cp1border: s.confirmPin[1] ? '#07478C' : '#E2E8F0',
-      cp2bg: s.confirmPin[2] ? '#EFF6FF' : '#F8FAFC', cp2border: s.confirmPin[2] ? '#07478C' : '#E2E8F0',
-      cp3bg: s.confirmPin[3] ? '#EFF6FF' : '#F8FAFC', cp3border: s.confirmPin[3] ? '#07478C' : '#E2E8F0',
-      onNp0: function(e) { this.handleNewPin(0, e.target.value); }.bind(this),
-      onNp1: function(e) { this.handleNewPin(1, e.target.value); }.bind(this),
-      onNp2: function(e) { this.handleNewPin(2, e.target.value); }.bind(this),
-      onNp3: function(e) { this.handleNewPin(3, e.target.value); }.bind(this),
-      onNpKey0: function(e) { this.handleNewPinKey(0, e); }.bind(this),
-      onNpKey1: function(e) { this.handleNewPinKey(1, e); }.bind(this),
-      onNpKey2: function(e) { this.handleNewPinKey(2, e); }.bind(this),
-      onNpKey3: function(e) { this.handleNewPinKey(3, e); }.bind(this),
-      onCp0: function(e) { this.handleConfirmPin(0, e.target.value); }.bind(this),
-      onCp1: function(e) { this.handleConfirmPin(1, e.target.value); }.bind(this),
-      onCp2: function(e) { this.handleConfirmPin(2, e.target.value); }.bind(this),
-      onCp3: function(e) { this.handleConfirmPin(3, e.target.value); }.bind(this),
-      onCpKey0: function(e) { this.handleConfirmPinKey(0, e); }.bind(this),
-      onCpKey1: function(e) { this.handleConfirmPinKey(1, e); }.bind(this),
-      onCpKey2: function(e) { this.handleConfirmPinKey(2, e); }.bind(this),
-      onCpKey3: function(e) { this.handleConfirmPinKey(3, e); }.bind(this),
-      onSaveNewPin: function() {
-        if (s.newPin.join('') !== s.confirmPin.join('') || !s.newPin.every(function(d) { return d !== ''; })) return;
-        this.setState({ newPinLoading: true });
-        setTimeout(function() {
-          this.setState({ newPinLoading: false, screen: 'pin', newPin: ['','','',''], confirmPin: ['','','',''], pin: ['','','',''] });
-        }.bind(this), 1000);
-      }.bind(this),
-      onBackFromNewPin: function() { this.setState({ screen: 'resetOtp' }); }.bind(this),
-
       // otp
       otp0: s.otp[0], otp1: s.otp[1], otp2: s.otp[2],
       otp3: s.otp[3], otp4: s.otp[4], otp5: s.otp[5],
